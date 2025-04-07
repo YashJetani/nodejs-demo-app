@@ -1,3 +1,6 @@
+![Alt Text]<img width="671" alt="nodejs-demo-app" src="https://github.com/user-attachments/assets/3fd8aba0-ede9-4f88-ab47-988d8f7f7419" />
+
+
 #  Node.js Demo App CI/CD with GitHub Actions and DockerHub
 
 This project demonstrates a full DevOps CI/CD pipeline using:
