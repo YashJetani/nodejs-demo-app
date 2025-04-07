@@ -34,3 +34,16 @@ jobs:
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/simple-node-app
+
+      - name: Deploy to EC2 via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            docker pull ${{ secrets.DOCKER_USERNAME }}/simple-node-app
+            docker stop nodeapp || true
+            docker rm nodeapp || true
+            docker run -d --name nodeapp -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/simple-node-app
+
